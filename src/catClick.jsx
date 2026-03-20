@@ -1,33 +1,34 @@
 import { useState } from "react";
 
-export default function catClick() {
+export default function CatClick({totalClickCount, setTotalClickCount, itemsOwned}) {
   const defaultImg = "src/assets/cat.png";
   const pressedImg = "src/assets/pop.png";
 
   const [image, setImage] = useState(defaultImg);
-  const [totalClickCount, setTotalClickCount] = useState(0);
 
   function click() {
-    setTotalClickCount(prev => prev + 1);
-    console.log("catButton was clicked!");
+    let multiplier = 1;
+
+    const food = itemsOwned.find(i => i.name === "Cat Food");
+    if (food) multiplier += food.amount;
+
+    setTotalClickCount(prev => prev + multiplier);
   }
 
   return (
     <div className="flex items-center justify-center h-screen">
-      <button
-      id="catClick"
-      onClick={click}
-      onMouseDown={() => setImage(pressedImg)}
-      onMouseUp={() => setImage(defaultImg)}
-      onMouseLeave={() => setImage(defaultImg)}
-      onTouchStart={() => setImage(pressedImg)}
-      onTouchEnd={() => setImage(defaultImg)}
+      <div className="flex flex-col items-center">
+        <button 
+        onClick={click}
+        onMouseDown={() => setImage(pressedImg)} 
+        onMouseUp={() => setImage(defaultImg)}
+        className="bg-amber-100 rounded-xl"
+        >
+          <img src={image} />
+        </button>
 
-      className="bg-amber-100 w-100 h-100 rounded-2xl"
-      >
-        <img src={image} alt="meow :3" />
-      </button>
-      <p id="click-count">Click Count: {totalClickCount}</p>
+        <p className="text-xl">Click Count: {totalClickCount}</p>
+      </div>
     </div>
   );
 }
