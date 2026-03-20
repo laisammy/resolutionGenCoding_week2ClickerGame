@@ -5,11 +5,18 @@ export default function catClick() {
   const pressedImg = "src/assets/pop.png";
 
   const [image, setImage] = useState(defaultImg);
+  const [totalClickCount, setTotalClickCount] = useState(0);
+
+  function click() {
+    setTotalClickCount(prev => prev + 1);
+    console.log("catButton was clicked!");
+  }
 
   return (
     <div className="flex items-center justify-center h-screen">
       <button
       id="catClick"
+      onClick={click}
       onMouseDown={() => setImage(pressedImg)}
       onMouseUp={() => setImage(defaultImg)}
       onMouseLeave={() => setImage(defaultImg)}
@@ -20,6 +27,7 @@ export default function catClick() {
       >
         <img src={image} alt="meow :3" />
       </button>
+      <p id="click-count">Click Count: {totalClickCount}</p>
     </div>
   );
 }
