@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function CatClick({totalClickCount, setTotalClickCount, itemsOwned}) {
+export default function CatClick({totalClickCount, setTotalClickCount, itemsOwned, clicksPerSecond}) {
   const defaultImg = "src/assets/cat.png";
   const pressedImg = "src/assets/pop.png";
 
@@ -16,7 +16,7 @@ export default function CatClick({totalClickCount, setTotalClickCount, itemsOwne
   }
 
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div>
       <div className="flex flex-col items-center">
         <button 
         onClick={click}
@@ -28,6 +28,7 @@ export default function CatClick({totalClickCount, setTotalClickCount, itemsOwne
         </button>
 
         <p className="text-xl">Click Count: {totalClickCount}</p>
+        <p className="text-xs">Autopops Per Second: {clicksPerSecond}</p>
       </div>
     </div>
   );

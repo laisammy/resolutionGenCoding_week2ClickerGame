@@ -1,15 +1,17 @@
-import catClick from "./catClick";
+import { useState } from "react";
 
 export default function shop({totalClickCount, setTotalClickCount, itemsOwned, setItemsOwned}) {
-    const shopItems = [
+    const [shopItems, setShopItems] = useState([
         { name: "Cat Food", cost: 50 },
         { name: "Autopop", cost: 20 }
-    ];
+    ]);
 
     function buyItem(itemName) {
         const item = shopItems.find(i => i.name === itemName);
 
         if (totalClickCount < item.cost) return;
+
+        setTotalClickCount(prev => prev - item.cost);
 
         setItemsOwned(prev => {
             const existing = prev.find(i => i.name === itemName);
@@ -20,21 +22,29 @@ export default function shop({totalClickCount, setTotalClickCount, itemsOwned, s
             }
             return [...prev, {name: itemName, amount: 1}];
         })
+
+        setShopItems(prev =>
+            prev.map(i =>
+                i.name === itemName
+                    ? { ...i, cost: Math.round(i.cost * 1.5)}
+                    : i
+            )
+        )
     }
     return(
         <div>
-            <h1 className="text-2xl flex flex-col items-center">Shop</h1>
+            <h1 className="text-3xl flex flex-col items-center font-semibold">Shop</h1>
 
             {shopItems.map(item => (
                 <div key = {item.name}
-                className="flex flex-row items-center justify-between w-full max-w-md mx-auto my-2 p-2 bg-amber-100 rounded-xl"
+                className="flex flex-row items-center justify-between w-full max-w-md mx-auto my-3 p-3 bg-amber-100 rounded-xl gap-x-10"
                 >
-                    <h3 className="text-2xl text-black">
+                    <h3 className="text-2xl text-black font-semibold">
                         {item.name}
                     </h3>
                     <button 
                     onClick = {() => buyItem(item.name)}
-                    className="bg-blue-500 text-white px-3 py-1 rounded-xl"
+                    className="bg-blue-500 text-white px-3 py-1 rounded-xl font-medium"
                     >
                         Buy ${item.cost}
                     </button>
