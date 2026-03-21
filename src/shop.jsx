@@ -1,12 +1,12 @@
 import { useState } from "react";
-import buySFX from "../assets/buySFX.mp3";
+import buySFX from "./assets/buySFX.mp3";
 
 export default function shop({totalClickCount, setTotalClickCount, itemsOwned, setItemsOwned}) {
     const [shopItems, setShopItems] = useState([
         { name: "Cat Food", cost: 50 },
         { name: "Autopop", cost: 20 }
     ]);
-    
+
     const buySFX_audio = new Audio(buySFX)
 
     function buyItem(itemName) {

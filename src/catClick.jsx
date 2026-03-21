@@ -1,7 +1,7 @@
 import { useState } from "react";
-import catImg from "../assets/cat.png";
-import popImg from "../assets/pop.png";
-import popSFX from "../assets/popSFX.mp3";
+import catImg from "./assets/cat.png";
+import popImg from "./assets/pop.png";
+import popSFX from "./assets/popSFX.mp3";
 
 export default function CatClick({totalClickCount, setTotalClickCount, itemsOwned, clicksPerSecond}) {
     const defaultImg = catImg;
