@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 export default function CatClick({totalClickCount, setTotalClickCount, itemsOwned, clicksPerSecond}) {
-    const defaultImg = "src/assets/cat.png";
-    const pressedImg = "src/assets/pop.png";
-    const popSound = "src/assets/popSFX.mp3";
+    const defaultImg = "./assets/cat.png";
+    const pressedImg = "./assets/pop.png";
+    const popSound = "./assets/popSFX.mp3";
     const audio = new Audio(popSound);
 
     const [image, setImage] = useState(defaultImg);
