@@ -23,23 +23,26 @@ export default function App() {
     }, [itemsOwned]);
 
     return (
-        <div className="bg-orange-200 flex flex-row items-center justify-center h-screen gap-x-15">
-            <Inventory
-                itemsOwned={itemsOwned}
-            />
-            <CatClick
-                totalClickCount={totalClickCount}
-                setTotalClickCount={setTotalClickCount}
-                itemsOwned={itemsOwned}
-                clicksPerSecond={clicksPerSecond}
-            />
+        <div className="bg-orange-200 flex flex-col items-center justify-center h-screen">
+            <h1 className="text-5xl font-bold pt-20">CatPop!</h1>
+            <div className="flex flex-row items-center justify-center h-screen gap-x-15">
+                <Inventory
+                    itemsOwned={itemsOwned}
+                />
+                <CatClick
+                    totalClickCount={totalClickCount}
+                    setTotalClickCount={setTotalClickCount}
+                    itemsOwned={itemsOwned}
+                    clicksPerSecond={clicksPerSecond}
+                />
 
-            <Shop
-                totalClickCount={totalClickCount}
-                setTotalClickCount={setTotalClickCount}
-                itemsOwned={itemsOwned}
-                setItemsOwned={setItemsOwned}
-            />
+                <Shop
+                    totalClickCount={totalClickCount}
+                    setTotalClickCount={setTotalClickCount}
+                    itemsOwned={itemsOwned}
+                    setItemsOwned={setItemsOwned}
+                />
+            </div>
         </div>
     );
 }

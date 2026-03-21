@@ -9,9 +9,9 @@ export default function inventory({itemsOwned}) {
             {itemsOwned.map(item => (
                 <div
                 key={item.name}
-                className="flex flex-row justify-between items-center bg-amber-100 p-2 rounded-lg my-2"
+                className="flex flex-row items-center justify-between w-full max-w-md mx-auto my-3 p-3 bg-amber-100 rounded-xl gap-x-25"
                 > 
-                    <span className="font-medium">{item.name}</span>
+                    <span className="text-2xl text-black font-semibold">{item.name}</span>
                     <span className="text-gray-700">x{item.amount}</span>
                 </div>
             ))}

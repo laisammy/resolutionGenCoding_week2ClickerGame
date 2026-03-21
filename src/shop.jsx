@@ -6,12 +6,17 @@ export default function shop({totalClickCount, setTotalClickCount, itemsOwned, s
         { name: "Autopop", cost: 20 }
     ]);
 
+    const buySFX = "src/assets/buySFX.mp3";
+    const buySFX_audio = new Audio(buySFX)
+
     function buyItem(itemName) {
         const item = shopItems.find(i => i.name === itemName);
 
         if (totalClickCount < item.cost) return;
 
         setTotalClickCount(prev => prev - item.cost);
+        buySFX_audio.currentTime = 0;
+        buySFX_audio.play();
 
         setItemsOwned(prev => {
             const existing = prev.find(i => i.name === itemName);
@@ -53,3 +58,4 @@ export default function shop({totalClickCount, setTotalClickCount, itemsOwned, s
         </div>
     )
 }
+
