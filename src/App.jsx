@@ -6,6 +6,7 @@ import Inventory from "./inventory";
 export default function App() {
     const [totalClickCount, setTotalClickCount] = useState(0);
     const [itemsOwned, setItemsOwned] = useState([]);
+const [backgroundColor, setBackgroundColor] = useState("bg-orange-200");
 
     const autoItem = itemsOwned.find(i => i.name === "Autopop");
     const clicksPerSecond = autoItem ? autoItem.amount : 0;
@@ -23,7 +24,7 @@ export default function App() {
     }, [itemsOwned]);
 
     return (
-        <div className="bg-orange-200 flex flex-col items-center justify-center h-screen">
+        <div className={`${backgroundColor} flex flex-col items-center justify-center h-screen`}>
             <h1 className="text-5xl font-bold pt-20">CatPop!</h1>
             <div className="flex flex-row items-center justify-center h-screen gap-x-15">
                 <Inventory
@@ -41,6 +42,7 @@ export default function App() {
                     setTotalClickCount={setTotalClickCount}
                     itemsOwned={itemsOwned}
                     setItemsOwned={setItemsOwned}
+                    setBackgroundColor={setBackgroundColor}
                 />
             </div>
         </div>

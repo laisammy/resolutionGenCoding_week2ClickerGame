@@ -1,10 +1,11 @@
 import { useState } from "react";
 import buySFX from "./assets/buySFX.mp3";
 
-export default function shop({totalClickCount, setTotalClickCount, itemsOwned, setItemsOwned}) {
+export default function shop({ totalClickCount, setTotalClickCount, itemsOwned, setItemsOwned, setBackgroundColor }) {
     const [shopItems, setShopItems] = useState([
         { name: "Cat Food", cost: 50 },
-        { name: "Autopop", cost: 20 }
+        { name: "Autopop", cost: 20 },
+        { name: "Background Change", cost: 500}
     ]);
 
     const buySFX_audio = new Audio(buySFX)
@@ -35,6 +36,12 @@ export default function shop({totalClickCount, setTotalClickCount, itemsOwned, s
                     : i
             )
         )
+        if (itemName === "Background Change") {
+            setBackgroundColor(prev =>
+                prev === "bg-orange-200" ? "bg-blue-200" : "bg-orange-200"
+            );
+        }
+        
     }
     return(
         <div>
@@ -58,4 +65,5 @@ export default function shop({totalClickCount, setTotalClickCount, itemsOwned, s
         </div>
     )
 }
+
 
